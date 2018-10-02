@@ -13,7 +13,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku": "git add -A && git commit -m 'quicksave' && git push && git push heroku master"
   },
   "eslintConfig": {
     "extends": "react-app"

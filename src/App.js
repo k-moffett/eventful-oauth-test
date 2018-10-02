@@ -8,14 +8,23 @@ const crypto  = require('crypto');
 class App extends Component {
 
   componentWillMount() {
-
+    this.requestToken()
   }
 
   requestToken() {
-    fetch("https://cors-anywhere.herokuapp.com/http://eventful.com/oauth/request_token", {
+    const oauthSignature = crypto.createHmac('sha1', `POST&http://eventful.com/oauth/request_token%26oauth_consumer_key%3D${process.env.REACT_APP_KEY}%26oauth_nonce%3D${this.nonce()}%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D${Date.now()}`);
+
+    fetch("http://eventful.com/oauth/request_token", {
       method: 'POST',
       headers: {
-        'Content-Type': 'text/html; charset=utf-8'
+        'Content-Type': 'text/html; charset=utf-8',
+        'Authorization': {
+                    'oauth_consumer_key': process.env.REACT_APP_KEY,
+                    'oauth_signature_method': "HMAC-SHA1",
+                    'oauth_timestamp': Date.now(),
+                    'oauth_nonce': this.nonce(),
+                    'oauth_signature': oauthSignature
+        }
       },
     })
     .then(res => res.json())
