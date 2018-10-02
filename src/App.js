@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   requestToken() {
-    const oauthSignature = crypto.createHmac('sha1', `POST&http://eventful.com/oauth/request_token%26oauth_consumer_key%3D${process.env.REACT_APP_KEY}%26oauth_nonce%3D${this.nonce()}%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D${Date.now()}`);
+    const oauthSignature = crypto.createHmac('sha1', `POST&https://eventful.com/oauth/request_token%26oauth_consumer_key%3D${process.env.REACT_APP_KEY}%26oauth_nonce%3D${this.nonce()}%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D${Date.now()}`);
 
     fetch("http://eventful.com/oauth/request_token", {
       method: 'POST',
