@@ -3,10 +3,13 @@ import './App.css';
 
 const crypto  = require('crypto');
 
+//app URL: https://event-oauth-test.herokuapp.com/
+
 class App extends Component {
 
   componentWillMount() {
-
+    console.log(process.env.REACT_APP_KEY)
+    console.log(process.env.REACT_APP_SECRET)
   }
 
   requestToken() {
@@ -63,7 +66,7 @@ class App extends Component {
   nonce() {
     let text = '';
     let selection = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (i=0; i<20; i++) {
+    for (let i=0; i<20; i++) {
             text += selection.charAt(Math.floor(Math.random()*selection.length));
         };
     return text;
