@@ -8,8 +8,7 @@ const crypto  = require('crypto');
 class App extends Component {
 
   componentWillMount() {
-    console.log(process.env.REACT_APP_KEY)
-    console.log(process.env.REACT_APP_SECRET)
+
   }
 
   requestToken() {
